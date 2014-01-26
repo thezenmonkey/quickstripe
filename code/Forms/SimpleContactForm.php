@@ -32,7 +32,16 @@ class SimpleContactForm extends Form {
 			$form->addErrorMessage('Message', 'We may have mistakenly marked your message as spam, please contact us via phone or email', 'warning');
 			Controller::curr()->redirectBack();
 		}
-		Debug::show($data);
+		
+		if(!class_exists('StaticPublisher')) {
+			$time = time() - 20;
+			if ($data['TimeLog'] <= $time ){
+				$form->addErrorMessage('Message', 'We may have mistakenly marked your message as spam, please contact us via phone or email', 'warning');
+				Controller::curr()->redirectBack();
+			}
+			
+		}
+		
 		$siteConfig = SiteConfig::current_site_config();
 		if($siteConfig->ContactFormFrom){
 			$From = $siteConfig->SiteEmail;
@@ -46,7 +55,8 @@ class SimpleContactForm extends Form {
 		$email = new Email($From, $To, $Subject,$Body);
 		$email->send();
 		$redirect = false;
-		if($siteConfig->DefaultThankYouID != 0 && !$data['CustomThankYou']) {
+		/*
+if($siteConfig->DefaultThankYouID != 0 && !$data['CustomThankYou']) {
 			$redirect = ThankYouPage::get()->byID($siteConfig->DefaultThankYouID);
 		} elseif ($data['CustomThankYou']) {
 			$redirect = ThankYouPage::get()->byID($data['CustomThankYou']);
@@ -58,6 +68,9 @@ class SimpleContactForm extends Form {
 			$form->addErrorMessage('Message', 'Thank you, someone from our office will contact you shortly', 'success');
 			Controller::curr()->redirectBack();
 		}
+*/
+		$form->addErrorMessage('Message', 'Thank you, someone from our office will contact you shortly', 'success');
+		Controller::curr()->redirectBack();
 		
 		
     }
