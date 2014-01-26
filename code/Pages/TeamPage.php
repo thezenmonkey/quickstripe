@@ -60,7 +60,11 @@ class TeamPage extends Page {
 	 * ----------------------------------*/
 	
 	public function TeamMembers() {
-		$team = Member::get()->inGroup('team-member');
+		$team = Member::get()->filterByCallback(
+			function($item){
+				return $item->inGroup('team-member');
+			}
+		);
 		return $team->count() ? $team : false;
 	}
 	
