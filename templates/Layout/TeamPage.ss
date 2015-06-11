@@ -5,15 +5,15 @@
 		<div class="content">
 			$Content
 			<% if $TeamMembers %>
-				<ul>
+				<ul class="team-members">
 					<% loop $TeamMembers %>
 						<li>
 							$Headshot.SetWidth(150)
-							<h4>$PersonalTitle $Title $Credentials<br>
+							<h4>$PersonalTitle $Name $Credentials<br>
 								<small>$JobTitle - $Role</small>
 							</h4>
 							$Bio
-							<dl>
+							<dl class="member-contact">
 								<dt><strong>Email:</strong></dt>
 									<dd>$Email</dd>
 								<dt><strong>Social:</strong></dt>

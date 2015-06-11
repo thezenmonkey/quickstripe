@@ -3,9 +3,8 @@
 	<article>
 		<h1>$Title</h1>
 		<div class="content">
-			$Content saa
+			$Content
 			<% if $Testimonials %>
-				waa
 				<ul>
 					<% loop $Testimonials %>
 						<li>
