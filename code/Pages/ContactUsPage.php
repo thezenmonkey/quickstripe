@@ -42,11 +42,19 @@ class ContactUsPage extends Page implements HiddenClass {
 
 class ContactUsPage_Controller extends Page_Controller 
 {
+	private static $allowed_actions = array (
+		"SimpleContactForm"
+	);
+	
+	
 	public function init() {
  		
  		parent::init();
  	}
 	
+	public function SimpleContactForm() {
+        return SimpleContactForm::create($this, 'SimpleContactForm');
+    }
 	
 			
 }
