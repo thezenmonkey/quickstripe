@@ -10,7 +10,7 @@ class SimpleContactForm extends Form {
             TextareaField::create("EmailMessage", "Company")->addExtraClass("honeypot")->setAttribute('autocomplete', 'no')
         );
         
-        if(!class_exists('StaticPublisher')) {
+        if(!class_exists('FormSpamProtectionExtension')) {
 	        $fields->insertAfter( HiddenField::create("TimeLog", '', time()), 'EmailMessage' );
         }
         
@@ -33,7 +33,7 @@ class SimpleContactForm extends Form {
 			Controller::curr()->redirectBack();
 		}
 		
-		if(!class_exists('StaticPublisher')) {
+		if(!class_exists('FormSpamProtectionExtension')) {
 			$time = time() - 20;
 			if ($data['TimeLog'] <= $time ){
 				$form->addErrorMessage('Message', 'We may have mistakenly marked your message as spam, please contact us via phone or email', 'warning');
@@ -43,16 +43,17 @@ class SimpleContactForm extends Form {
 		}
 		
 		$siteConfig = SiteConfig::current_site_config();
-		if($siteConfig->ContactFormFrom){
+		if($siteConfig->SiteEmail){
 			$From = $siteConfig->SiteEmail;
 		} else {
-			$From = $data['Email'];
+			$From = $siteConfig->MainEmail;
 		}
 		
 		$To = $siteConfig->SiteEmail;
 		$Subject = "Website Contact From ".$data['Name'];
 		$Body = $data['Company']."<br>\n ".$data['Email'];
 		$email = new Email($From, $To, $Subject,$Body);
+		$email->replyTo( $data['Email'] );
 		$email->send();
 		$redirect = false;
 		/*
