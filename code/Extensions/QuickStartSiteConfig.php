@@ -26,8 +26,8 @@ class QuickStartSiteConfig extends DataExtension {
 	);
 	
 	private static $has_one = array(
-		"Logo" => "Image"
-		//"DefaultThankYou" => "ThankYouPage"
+		"Logo" => "Image",
+		"DefaultThankYou" => "Page"
 	);
 	
 	
@@ -41,14 +41,17 @@ class QuickStartSiteConfig extends DataExtension {
 		$fields->addFieldToTab("Root.Main", TextField::create("PhoneNumber"));
 		$fields->addFieldToTab("Root.Main", TextField::create("FaxNumber"));
 		$fields->addFieldToTab("Root.Main", EmailField::create("MainEmail", 'Main Contact Email'));
-		$fields->addFieldToTab("Root.Main", EmailField::create("SiteEmail", 'Email for Contact Forms'));
+		$fields->addFieldToTab(
+			"Root.Main", 
+			EmailField::create("SiteEmail", 'Email for Contact Forms')->setDescription('Email Address to be used in the <em>From</em> Field by an messages sent by the website.')
+		);
 		$fields->addFieldToTab("Root.Main", UploadField::create("Logo"));
 		
 		$socialField = ToggleCompositeField::create(
 	 		"SocialGroup",
 	 		"Social Media",
 	 		array (
-	 			TextField::create("Twitter", 'Twitter User Name')->setDescription('User Name WITHOUT the at symobole (@) '),
+	 			TextField::create("Twitter", 'Twitter User Name')->setDescription('Username WITHOUT the at symobole (@) '),
 	 			TextField::create("FacebookURL", 'Facebook URL'),
 	 			TextField::create("LinkedInURL", 'LinkedIn URL'),
 	 			TextField::create("GooglePlusURL", 'Google+ URL'),
