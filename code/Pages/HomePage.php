@@ -48,12 +48,12 @@ class HomePage_Controller extends Page_Controller
  	}
 	
 	public function FeaturedPost(){
-		return $post = BlogEntry::get()->filter(array("IsFeatured" => 1))->sort("Date", "ASC")->First() ? $post : false;
+		return $post = BlogPost::get()->filter(array("IsFeatured" => 1))->sort("Date", "ASC")->First() ? $post : false;
 	}
 	
 	
 	public function LatestPost(){
-		return $post = BlogEntry::get()->sort("Date", "ASC")->First() ? $post : false;
+		return $post = BlogPost::get()->sort("PublishDate", "ASC")->First() ? $post : false;
 	}
 	
 	public function GetTestimonial() {
