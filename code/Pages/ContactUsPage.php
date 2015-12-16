@@ -53,7 +53,14 @@ class ContactUsPage_Controller extends Page_Controller
  	}
 	
 	public function SimpleContactForm() {
-        return SimpleContactForm::create($this, 'SimpleContactForm');
+		
+		$form = SimpleContactForm::create($this, 'SimpleContactForm');
+		
+		if($form->hasExtension('FormSpamProtectionExtension')) {
+		    $form->enableSpamProtection();
+		}
+		
+        return $form;
     }
 	
 			
