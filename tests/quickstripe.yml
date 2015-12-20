@@ -1,0 +1,34 @@
+SiteConfig:
+  BusinessName: 'Lebowski Enterprises'
+  StreetAddress: '5227 Santa Monica Boulevard'
+  City: 'Los Angeles'
+  Province: 'CA'
+  PostalCode: 90029
+  PhoneNumber: '999 999 9999'
+  FaxNumber:  '999 999 999'
+  MainEmail: 'jeff@lebowski.com'
+  SiteEmail: 'big@lebowski.com'
+  Twitter: 'TheDude'
+  LinkedInURL: 'https://www.linkedin.com/in/big-lebowski-2996b01b'
+  FacebookURL: 'https://www.facebook.com/BigLebowskiMovie/'
+  GooglePlusURL: 'https://www.facebook.com/BigLebowskiMovie/'
+  PinterestURL: 'https://www.pinterest.com/landguy/big-lebowski/'
+  YouTubeURL: 'https://www.youtube.com/channel/UCol0zxpZoB9k0ai6BhoSDIA'
+  InstagramURL: 'https://www.instagram.com/explore/tags/biglebowski/'
+  TumblrURL: 'https://www.tumblr.com/tagged/the-big-lebowski'
+
+TestimonialPage:
+  FirstTestimonialPage:
+    Title: 'First Testimonial Page'
+  SecondTestimonialPage:
+    Title: 'Second Testimonial Page'
+
+Testimonial:
+  FirstTestimonial:
+    Title: 'First Testimonial'
+    Contributor: 'First Contributor'
+    TestimonialPage: =>TestimonialPage.FirstTestimonialPage
+  SecondTestimonial:
+    Title: 'Second Testimonial'
+    Contributor: 'Second Contributor'
+    TestimonialPage: =>TestimonialPage.FirstTestimonialPage
