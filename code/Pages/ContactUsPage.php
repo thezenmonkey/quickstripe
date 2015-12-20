@@ -3,11 +3,11 @@
 class ContactUsPage extends Page implements HiddenClass
 {
 
-    public static $db = array(
+    private static $db = array(
         
     );
 
-    public static $has_many = array(
+    private static $has_many = array(
         
     );
 

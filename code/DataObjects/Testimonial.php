@@ -18,5 +18,5 @@ class Testimonial extends DataObject
         "Contributor"
     );
     
-    public static $default_sort = '"ID" DESC';
+    private static $default_sort = '"ID" DESC';
 }
