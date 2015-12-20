@@ -1,0 +1,10 @@
+---
+name: quickstripeconfig
+---
+Member:
+  extensions:
+    - 'TeamMemberExtension'
+
+SiteConfig:
+  extensions:
+    - 'QuickStartSiteConfig'
