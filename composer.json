@@ -15,7 +15,7 @@
 	"require":
 	{
 		"silverstripe/cms": "~3.1",
-		"silverstripe/blog": "dev-master"
+		"silverstripe/blog": "2.3.x-dev"
 	},
 	"config": {
 		"process-timeout": 600	
