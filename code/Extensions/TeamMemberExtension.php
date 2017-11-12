@@ -28,11 +28,14 @@ class TeamMemberExtension extends DataExtension
         $fields->insertAfter(TextField::create("Credentials"), "Surname");
         $fields->insertAfter(TextField::create("JobTitle", "Job Title"), "Credientials");
         $fields->insertAfter(TextField::create("Role"), "JobTitle");
-        $fields->insertAfter(TextField::create("Twitter", "Twitter User Name")->setDescription("Do NOT include the '@'"), "Email");
-        $fields->insertAfter(TextField::create("Facebook", "Facebook Page or Profile"), "Twitter");
-        $fields->insertAfter(TextField::create("GooglePlus", "Google+ Profile"), "Facebook");
-        $fields->insertAfter(UploadField::create("Headshot"), "GooglePlus");
-        $fields->insertAfter(HTMLEditorField::create("Bio"), "Headshot");
+        $fields->addFieldsToTab('Root.PersonalInfo', array(
+            TextField::create('Twitter')->setDescription("Do NOT include the '@'"),
+            TextField::create('Facebook'),
+            UploadField::create("Headshot")->setFolderName('uploads/headshots'),
+            HTMLEditorField::create('Bio'),
+            UploadField::create('BlogProfileImage')->setFolderName('uploads/headshots'),
+            TextField::create('BlogProfileSummary')
+        ));
     }
     
     public function requireDefaultRecords()
