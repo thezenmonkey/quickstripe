@@ -12,10 +12,10 @@ class HomePage extends Page implements HiddenClass
     );
 
     /**
-     * Change the home page to HomePage type
+     * Change the home page to HomePage type Remove until made optional via config
      */
     
-    public function requireDefaultRecords()
+    /*public function requireDefaultRecords()
     {
         if (!SiteTree::get_by_link("home")) {
             $homepage = new HomePage();
@@ -38,7 +38,7 @@ class HomePage extends Page implements HiddenClass
         }
     
         parent::requireDefaultRecords();
-    }
+    }*/
 }
 
 class HomePage_Controller extends Page_Controller
